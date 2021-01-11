@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_height="match_parent"
     android:gravity="center"
     tools:context=".LoginActivity">
-    
+
+
     <ImageView
         android:src="@drawable/logo"
         android:layout_width="wrap_content"
@@ -45,5 +46,6 @@
         android:text="Login"
         android:textSize="18sp"
         app:backgroundTint="#2185E1" />
+
 
 </LinearLayout>
