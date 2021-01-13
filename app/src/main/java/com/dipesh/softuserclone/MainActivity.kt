@@ -6,6 +6,7 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import com.dipesh.softuserclone.`object`.Student
 import com.dipesh.softuserclone.fragments.AboutFragment
 import com.dipesh.softuserclone.fragments.AddStudentFragment
 import com.dipesh.softuserclone.fragments.HomeFragment
@@ -27,12 +28,11 @@ class MainActivity : AppCompatActivity() {
         addStudentFragment=AddStudentFragment()
         aboutUsFragment=AboutFragment()
 
-        studentArrayList=intent.getParcelableArrayListExtra("studentArrayList")
+        Student.addStudent()
 
         makeCurrentFragment(homeFragment)
 
         bottomNavigation=findViewById(R.id.bottomNavigation)
-
         bottomNavigation.setOnNavigationItemSelectedListener {item->
             when(item.itemId){
                 R.id.icHome ->makeCurrentFragment(homeFragment)
@@ -49,7 +49,5 @@ class MainActivity : AppCompatActivity() {
            // setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             commit()
         }
-
-
 
 }
