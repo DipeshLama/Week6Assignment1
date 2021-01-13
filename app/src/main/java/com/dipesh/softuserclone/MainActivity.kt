@@ -16,38 +16,60 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
     private lateinit var bottomNavigation:BottomNavigationView
-    lateinit var homeFragment:HomeFragment
+    lateinit var linear:LinearLayout
     var studentArrayList:ArrayList<student>?= ArrayList()
-    lateinit var addStudentFragment:AddStudentFragment
-    lateinit var aboutUsFragment:AboutFragment
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        homeFragment=HomeFragment()
-        addStudentFragment=AddStudentFragment()
-        aboutUsFragment=AboutFragment()
+        val homeFragment=HomeFragment()
+        val addStudentFragment=AddStudentFragment()
+        val aboutUsFragment=AboutFragment()
+        linear=findViewById(R.id.linear)
 
         Student.addStudent()
-
         makeCurrentFragment(homeFragment)
 
         bottomNavigation=findViewById(R.id.bottomNavigation)
         bottomNavigation.setOnNavigationItemSelectedListener {item->
             when(item.itemId){
-                R.id.icHome ->makeCurrentFragment(homeFragment)
-                R.id.icAddStudent ->makeCurrentFragment(addStudentFragment)
-                R.id.icAbout ->makeCurrentFragment(aboutUsFragment)
+                R.id.icHome ->{makeCurrentFragment(homeFragment)
+                    true
+                }
+                R.id.icAddStudent ->{makeCurrentFragment(addStudentFragment)
+                    true
+                }
+                R.id.icAbout ->{makeCurrentFragment(aboutUsFragment)
+                    true
+                }
+
+                else -> false
             }
-            true
+        }
+
+        bottomNavigation.setOnNavigationItemReselectedListener {item->
+            when(item.itemId){
+                R.id.icHome ->{makeCurrentFragment(homeFragment)
+                    true
+                }
+                R.id.icAddStudent ->{makeCurrentFragment(addStudentFragment)
+                    true
+                }
+                R.id.icAbout ->{makeCurrentFragment(aboutUsFragment)
+                    true
+                }
+                else -> false
+            }
         }
     }
 
-    private fun makeCurrentFragment(fragment:Fragment)=
+    private fun makeCurrentFragment(fragment:Fragment) {
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.flWrapper,fragment)
-           // setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            replace(R.id.linear, fragment)
+            // setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             commit()
         }
+    }
 
 }

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import com.dipesh.softuserclone.fragments.HomeFragment
 import com.dipesh.softuserclone.model.student
 
@@ -52,12 +53,14 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener{
 
     override fun onClick(v: View?) {
         when(v?.id){
-            R.id.btnLogin->{
-                if(isValid()) {
+            R.id.btnLogin -> {
+                if (isValid()) {
                     if (userValidator()) {
-                        val intent=Intent(this, MainActivity::class.java)
+                        val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
-
+                        finish()
+                    } else {
+                        Toast.makeText(this, "Invalid username/password", Toast.LENGTH_SHORT).show()
                     }
                 }
             }

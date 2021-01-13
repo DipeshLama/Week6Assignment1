@@ -14,7 +14,6 @@ import com.dipesh.softuserclone.model.student
 class StudentAdapter(
         val lstStudents:ArrayList<student>,
         val context:Context
-
 ):RecyclerView.Adapter<StudentAdapter.StudentViewHolder>() {
 
     class StudentViewHolder(view:View)
@@ -37,7 +36,6 @@ class StudentAdapter(
             }
     }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StudentViewHolder {
         val view=LayoutInflater.from(parent.context)
                 .inflate(R.layout.my_layout,parent,false)
@@ -56,13 +54,7 @@ class StudentAdapter(
         holder.deleteIcon.setOnClickListener {
             lstStudents.removeAt(position)
             notifyDataSetChanged()
-
         }
-        
-
-
-
-
     }
 
     override fun getItemCount(): Int {

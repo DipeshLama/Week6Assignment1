@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.dipesh.softuserclone.R
+import com.dipesh.softuserclone.`object`.Student
 import com.dipesh.softuserclone.model.student
 
 private const val ARG_PARAM1 = "param1"
@@ -72,13 +73,14 @@ class AddStudentFragment : Fragment() {
         genderSelected()
 
         btnSend.setOnClickListener {
-            val name=etFullName.text.toString()
-            val age=etAge.text.toString().toInt()
-            val gender=gender
-            val address=etAddress.text.toString()
-            val imageLink=etImageLink.text.toString()
             if(isValid()){
-                lstStudent.add(student(name,age,gender,address,imageLink))
+                Student.lstStudent.add(student(
+                    studentName =etFullName.text.toString(),
+                    studentAge = etAge.text.toString(),
+                    studentGender = gender,
+                        studentAddress =etAddress.text.toString(),
+                    imageLink = etImageLink.text.toString()
+                ))
                 clear()
             }
         }
@@ -91,7 +93,7 @@ class AddStudentFragment : Fragment() {
         rdoMale.isChecked=false
         rdoFemale.isChecked=false
         rdoOthers.isChecked=false
-        etImageLink.setText("")
+      //  etImageLink.setText("")
     }
 
     private fun genderSelected(){
