@@ -93,7 +93,7 @@ class AddStudentFragment : Fragment() {
         rdoMale.isChecked=false
         rdoFemale.isChecked=false
         rdoOthers.isChecked=false
-      //  etImageLink.setText("")
+        etImageLink.setText("")
     }
 
     private fun genderSelected(){

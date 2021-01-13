@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dipesh.softuserclone.R
 import com.dipesh.softuserclone.model.student
+import de.hdodenhof.circleimageview.CircleImageView
 
 class StudentAdapter(
         val lstStudents:ArrayList<student>,
@@ -22,7 +23,7 @@ class StudentAdapter(
             val tvAge:TextView
             val tvAddress:TextView
             val tvGender:TextView
-            val imgProfile:ImageView
+            val imgProfile:CircleImageView
             val deleteIcon:ImageView
 
             init {
