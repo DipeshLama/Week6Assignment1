@@ -9,12 +9,14 @@ import androidx.fragment.app.FragmentTransaction
 import com.dipesh.softuserclone.fragments.AboutFragment
 import com.dipesh.softuserclone.fragments.AddStudentFragment
 import com.dipesh.softuserclone.fragments.HomeFragment
+import com.dipesh.softuserclone.model.student
 import com.google.android.material.bottomnavigation.BottomNavigationMenu
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
     private lateinit var bottomNavigation:BottomNavigationView
     lateinit var homeFragment:HomeFragment
+    var studentArrayList:ArrayList<student>?= ArrayList()
     lateinit var addStudentFragment:AddStudentFragment
     lateinit var aboutUsFragment:AboutFragment
 
@@ -25,7 +27,10 @@ class MainActivity : AppCompatActivity() {
         addStudentFragment=AddStudentFragment()
         aboutUsFragment=AboutFragment()
 
+        studentArrayList=intent.getParcelableArrayListExtra("studentArrayList")
+
         makeCurrentFragment(homeFragment)
+
         bottomNavigation=findViewById(R.id.bottomNavigation)
 
         bottomNavigation.setOnNavigationItemSelectedListener {item->
@@ -41,8 +46,10 @@ class MainActivity : AppCompatActivity() {
     private fun makeCurrentFragment(fragment:Fragment)=
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.flWrapper,fragment)
-            setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+           // setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             commit()
         }
+
+
 
 }

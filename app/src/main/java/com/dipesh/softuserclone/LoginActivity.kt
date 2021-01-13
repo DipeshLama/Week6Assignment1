@@ -1,15 +1,19 @@
 package com.dipesh.softuserclone
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import com.dipesh.softuserclone.fragments.HomeFragment
+import com.dipesh.softuserclone.model.student
 
 class LoginActivity : AppCompatActivity(),View.OnClickListener{
     private lateinit var etUsername: EditText
     private lateinit var etPassword:EditText
     private lateinit var btnLogin: Button
+    private var studentArrayList=ArrayList<student>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -17,6 +21,9 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener{
         etUsername=findViewById(R.id.etUserName)
         etPassword=findViewById(R.id.etPassword)
         btnLogin=findViewById(R.id.btnLogin)
+
+
+        btnLogin.setOnClickListener(this)
     }
 
     private fun isValid():Boolean{
@@ -34,7 +41,26 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener{
         return true
     }
 
-    override fun onClick(v: View?) {
+   private fun userValidator():Boolean{
+       val userName=etUsername.text.toString()
+       val password=etPassword.text.toString()
+       if(userName=="softwarica" && password=="coventry"){
+           return true
+       }
+       return false
+   }
 
+    override fun onClick(v: View?) {
+        when(v?.id){
+            R.id.btnLogin->{
+                if(isValid()) {
+                    if (userValidator()) {
+                        val intent=Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+
+                    }
+                }
+            }
+        }
     }
 }
